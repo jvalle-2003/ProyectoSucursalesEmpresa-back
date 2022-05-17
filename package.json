@@ -1,0 +1,19 @@
+{
+  "name": "proyectosucursalesempresa-back",
+  "version": "1.0.0",
+  "description": "proyecto de examen del IIBIM",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jvalle-2020091/ProyectoSucursalesEmpresa-back.git"
+  },
+  "author": "GRUPO 1",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jvalle-2020091/ProyectoSucursalesEmpresa-back/issues"
+  },
+  "homepage": "https://github.com/jvalle-2020091/ProyectoSucursalesEmpresa-back#readme"
+}
