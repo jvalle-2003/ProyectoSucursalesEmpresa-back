@@ -18,5 +18,5 @@ app.use(cors());
 app.use('/enterprise', enterpriseRoutes);
 app.use('/product', productRoutes);
 app.use('/enterpriseBranch', enterpriseBranchRoutes);
-app.use('productBranch', productBranch);
+app.use('/productBranch', productBranch);
 module.exports = app;

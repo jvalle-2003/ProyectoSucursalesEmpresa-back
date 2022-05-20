@@ -8,7 +8,7 @@ exports.testProduct = (req, res) => {
     return res.send({ message: 'Function test is running' });
 }
 
-// ---------------------------------CRUD productos -----------------------------------------
+// -----------------------------------CRUD productos -----------------------------------------
 
 exports.addProduct = async (req, res) => {
     try {
@@ -127,8 +127,9 @@ exports.getProducts = async (req, res) => {
 }
 
 
-// --------------------------------Busqueda de productos-----------------------
+// ----------------------------------------Busqueda de productos-------------------------------
 
+//busqueda de producto por stock (mayor a menor y viceversa)
 exports.getProductsByStockAsc = async (req, res) => {
     try {
         const enterprise = await Enterprise.findOne({ _id: req.enterprise.sub}).populate('products');
@@ -163,91 +164,39 @@ exports.getProductsByStockDesc = async (req, res) => {
     }
 }
 
-exports.getProductsByNameAsc = async (req, res) => {
-    try {
-        const enterprise = await Enterprise.findOne({ _id: req.enterprise.sub }).populate('products');
-        const products = enterprise.products.sort((a, b) => {
-            let nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
-            if (nameA > nameB) {
-                return -1;
-            }
-        })
-        if (products === null || products === undefined) {
-            return res.send({ message: 'products not found' })
-        } else {
-            return res.send({ message: 'Products found:', products })
-        }
-    } catch (err) {
+//Busqueda de productos por nombre
+
+exports.productByName = async(req, res)=>{
+    try{
+        const params = req.body;
+        const data = {
+            name: params.name
+        };
+        const msg = validate.validateData(data);
+        if(msg) return res.status(400).send(msg);
+        const products = await Product.find({name: {$regex: params.name, $options: 'i'}}).lean();
+        return res.send({products})
+    }catch(err){
         console.log(err);
-        return res.status(500).send({ message: 'Error getting the products' });
+        return res.status(500).send({err, message: 'Error searching product'});
     }
 }
 
-exports.getProductsByNameDesc = async (req, res) => {
-    try {
-        const enterprise = await Enterprise.findOne({ _id: req.enterprise.sub }).populate('products');
 
-        const products = enterprise.products.sort((a, b) => {
-            let nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
-            if (nameA < nameB) {
-                return -1;
-            }
-            if (nameA > nameB) {
-                return 1;
-            }
-            return 0;
-        })
-        if (products === null || products === undefined) {
-            return res.send({ message: 'products not found' })
-        } else {
-            return res.send({ message: 'Products found:', products })
-        }
-    } catch (err) {
-        console.log(err);
-        return res.status(500).send({ message: 'Error getting the products' });
-    }
-}
+// Busqueda de productos por proveedor
 
-exports.getProductsByProviderAsc = async (req, res) => {
-    try {
-        const enterprise = await Enterprise.findOne({ _id: req.enterprise.sub }).populate('products');
-        const products = enterprise.products.sort((a, b) => {
-            let providerA = a.provider.toLowerCase(), providerB = b.provider.toLowerCase();
-            if (providerA < providerB) {
-                return -1;
-            }
-        })
-        if (products === null || products === undefined) {
-            return res.send({ message: 'products not found' })
-        } else {
-            return res.send({ message: 'Products found:', products })
-        }
-    } catch (err) {
+exports.productByProvider = async(req, res)=>{
+    try{
+        const params = req.body;
+        const data = {
+            provider: params.provider
+        };
+        const msg = validate.validateData(data);
+        if(msg) return res.status(400).send(msg);
+        const products = await Product.find({provider: {$regex: params.provider, $options: 'i'}}).lean();
+        return res.send({products})
+    }catch(err){
         console.log(err);
-        return res.status(500).send({ message: 'Error getting the products' });
-    }
-}
-
-exports.getProductsByProviderDesc = async (req, res) => {
-    try {
-        const enterprise = await Enterprise.findOne({ _id: req.enterprise.sub }).populate('products');
-        const products = enterprise.products.sort((a, b) => {
-            let providerA = a.name.toLowerCase(), providerB = b.name.toLowerCase();
-            if (providerA < providerB) {
-                return -1;
-            }
-            if (providerA > providerB) {
-                return 1;
-            }
-            return 0;
-        })
-        if (products === null || products === undefined) {
-            return res.send({ message: 'products not found' })
-        } else {
-            return res.send({ message: 'Products found:', products })
-        }
-    } catch (err) {
-        console.log(err);
-        return res.status(500).send({ message: 'Error getting the products' });
+        return res.status(500).send({err, message: 'Error searching product'});
     }
 }

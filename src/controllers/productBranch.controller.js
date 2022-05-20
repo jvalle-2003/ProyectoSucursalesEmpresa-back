@@ -6,7 +6,7 @@ const Product = require('../models/product.model');
 const validate = require('../utils/validate');
 
 
-// ------------------------------------Validaciones de los productos de una sucursal ---------------------------------
+// ------------------------------------Agregar productos a una sucursal ---------------------------------
 
 exports.addProductBranch = async (req, res) => {
     try {
@@ -66,48 +66,7 @@ exports.addProductBranch = async (req, res) => {
     }
 }
 
-exports.saleOfProduct = async (req, res) => {
-    try {
-        const params = req.body;
-        const enterpriseBranchId = req.params.enterpriseBranchId;
-        const enterpriseId = req.enterprise.sub;
-        let data = {
-            quantity: params.quantity,
-            productBranchId: req.params.productBranchId
-        }
-        let msg = validate.validateData(data);
-        if (!msg) {
-            const checkBranch = await EnterpriseBranch.findOne({ _id: enterpriseBranchId });
-            if (checkBranch === null || checkBranch.enterprise != enterpriseId) {
-                return res.status(400).send({ message: 'This branch does not belong to the enterprise' })
-            } else {
-                const enterpriseBranch = await EnterpriseBranch.findOne({ _id: enterpriseBranchId });
-                const productBranch = enterpriseBranch.productsBranch.id(data.productBranchId)
-                if (productBranch === null || productBranch === undefined) {
-                    return res.status(400).send({ message: 'The product was not found in the branch' });
-                } else {
-                    if (data.quantity > productBranch.stock) {
-                        return res.status(400).send({ message: 'Insufficient quantity of stock' });
-                    } else {
-                        const finalStock = (productBranch.stock - data.quantity)
-                        enterpriseBranch.productsBranch.id(data.productBranchId).stock = finalStock
-                        enterpriseBranch.productsBranch.id(data.productBranchId).sales
-                            = parseInt(parseInt(enterpriseBranch.productsBranch.id(data.productBranchId).sales) + parseInt(data.quantity))
-                        await enterpriseBranch.save();
-                        return res.send({ message: 'product sold' });
-                    }
-                }
-            }
-        } else {
-            return res.status(400).send(msg);
-        }
-    } catch (error) {
-        console.log(error);
-        return res.status(500).send({ message: 'Error selling product' });
-    }
-}
-
-//------------Busqueda de Productos por Sucursal--------------
+//---------------------Busqueda de Productos por Sucursal----------------------
 
 exports.getProductBranch = async (req, res) => {
     try {
@@ -117,6 +76,7 @@ exports.getProductBranch = async (req, res) => {
 
         const checkBranch = await EnterpriseBranch.findOne({ _id: enterpriseBranchId });
         if (checkBranch === null || checkBranch.enterprise != enterpriseId) {
+            console.log(enterpriseId);
             return res.status(400).send({ message: 'This branch does not belong to the enterprise' })
         } else {
             const enterpriseBranch = await EnterpriseBranch.findOne({ _id: enterpriseBranchId });
@@ -140,7 +100,8 @@ exports.getProductsBranch = async (req, res) => {
         const enterpriseId = req.enterprise.sub;
 
         const checkBranch = await EnterpriseBranch.findOne({ _id: enterpriseBranchId });
-        if (checkBranch === null || EnterpriseBranch.enterprise != enterpriseId) {
+        if (checkBranch === null || checkBranch.enterprise != enterpriseId) {
+            console.log(enterpriseId);
             return res.status(400).send({ message: 'This branch does not belong to the enterprise' })
         } else {
             const enterpriseBranch = await EnterpriseBranch.findOne({ _id: enterpriseBranchId }).populate('productsBranch');
@@ -154,5 +115,49 @@ exports.getProductsBranch = async (req, res) => {
     } catch (err) {
         console.log(err);
         return res.status(500).send({ message: 'Error getting products' });
+    }
+}
+
+// ----------------------Simulación venta de un producto ---------------------------------
+
+exports.saleOfProduct = async (req, res) => {
+    try {
+        const params = req.body;
+        const enterpriseBranchId = req.params.enterpriseBranchId;
+        const enterpriseId = req.enterprise.sub;
+        let data = {
+            quantity: params.quantity,
+            productBranchId: req.params.productBranchId
+        }
+        let msg = validate.validateData(data);
+        if (!msg) {
+            const checkBranch = await EnterpriseBranch.findOne({ _id: enterpriseBranchId });
+            if (checkBranch === null || checkBranch.enterprise != enterpriseId) {
+                return res.status(400).send({ message: 'This branch does not belong to the enterprise' })
+            } else {
+                const enterpriseBranch = await EnterpriseBranch.findOne({ _id: enterpriseBranchId });
+                const productBranch = enterpriseBranch.productsBranch.id(data.productBranchId)
+                if (productBranch === null || productBranch === undefined) {
+                    console.log(productBranch)
+                    return res.status(400).send({ message: 'The product was not found in the branch' });
+                } else {
+                    if (data.quantity > productBranch.stock) {
+                        return res.status(400).send({ message: 'Insufficient quantity of stock' });
+                    } else {
+                        const finalStock = (productBranch.stock - data.quantity)
+                        enterpriseBranch.productsBranch.id(data.productBranchId).stock = finalStock
+                        enterpriseBranch.productsBranch.id(data.productBranchId).sales
+                            = parseInt(parseInt(enterpriseBranch.productsBranch.id(data.productBranchId).sales) + parseInt(data.quantity))
+                        await enterpriseBranch.save();
+                        return res.send({ message: 'product sold successfully' });
+                    }
+                }
+            }
+        } else {
+            return res.status(400).send(msg);
+        }
+    } catch (error) {
+        console.log(error);
+        return res.status(500).send({ message: 'Error selling product' });
     }
 }

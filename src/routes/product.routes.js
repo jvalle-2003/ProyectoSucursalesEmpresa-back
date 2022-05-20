@@ -14,7 +14,8 @@ api.delete('/deleteProduct/:id', mdAuth.ensureAuth, productController.deleteProd
 //RUTAS DE BUSQUEDA DE PRODUCTOS
 api.get('/getProductsByStockAsc',mdAuth.ensureAuth, productController.getProductsByStockAsc);
 api.get('/getProductsByStockDesc',mdAuth.ensureAuth, productController.getProductsByStockDesc);
-api.get('/getProductsByNameAsc',mdAuth.ensureAuth, productController.getProductsByNameAsc);
-api.get('/getProductsByNameDesc',mdAuth.ensureAuth, productController.getProductsByNameDesc);
-api.get('/getProductsByProviderAsc',mdAuth.ensureAuth, productController.getProductsByProviderAsc);
-api.get('/getProductsByProviderDesc',mdAuth.ensureAuth, productController.getProductsByProviderDesc);
+api.get('/getProductsByName', mdAuth.ensureAuth, productController.productByName);
+api.get('/getProductsByProvider', mdAuth.ensureAuth, productController.productByProvider);
+
+
+module.exports = api;

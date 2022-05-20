@@ -5,13 +5,13 @@ const api = express.Router();
 const productBranchController= require('../controllers/productBranch.controller'); 
 const mdAuth = require('../services/authenticated');
 
-//---------------------Rutas para Agregar y vender Productos en Sucursales---------------
+//---------------------Ruta para Agregar productos a Sucursales---------------
 api.post('/addProductsBranch/:enterpriseBranchId', mdAuth.ensureAuth, productBranchController.addProductBranch);
-api.post('/saleOfProduct/:enterpriseBranchId/:id', mdAuth.ensureAuth, productBranchController.saleOfProduct); 
-
 //----------------------Rutas para Buscar productos de Sucursal--------------------------
-api.get('/getProductBranch/:enterpriseBranchId/:id',mdAuth.ensureAuth, productBranchController.getProductBranch);
+api.get('/getProductBranch/:enterpriseBranchId/:productBranchId',mdAuth.ensureAuth, productBranchController.getProductBranch);
 api.get('/getProductsBranch/:enterpriseBranchId',mdAuth.ensureAuth, productBranchController.getProductsBranch);
+//---------------------Ruta para vender productos de una sucursal--------------------------------
+api.post('/saleOfProduct/:enterpriseBranchId/:productBranchId', mdAuth.ensureAuth, productBranchController.saleOfProduct); 
 
 module.exports = api;
 
