@@ -3,7 +3,7 @@
 const express = require('express');
 const api = express.Router();
 const mdAuth = require('../services/authenticated');
-const enterpriseBranchController = require('../controllers/enterpriseBranch.contoller');
+const enterpriseBranchController = require('../controllers/enterpriseBranch.controller');
 
 //* Admin
 
