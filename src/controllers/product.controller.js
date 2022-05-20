@@ -125,3 +125,129 @@ exports.getProducts = async (req, res) => {
         return res.status(500).send({ message: 'Error looking for the products' });
     }
 }
+
+
+// --------------------------------Busqueda de productos-----------------------
+
+exports.getProductsByStockAsc = async (req, res) => {
+    try {
+        const enterprise = await Enterprise.findOne({ _id: req.enterprise.sub}).populate('products');
+        const products = enterprise.products.sort((a, b) => {
+            return b.stock - a.stock
+        })
+        if (products === null || products === undefined) {
+            return res.send({ message: 'products not found' })
+        } else {
+            return res.send({ message: 'Products found:', products })
+        }
+    } catch (err) {
+        console.log(err);
+        return res.status(500).send({ message: 'Error getting the products' });
+    }
+}
+
+exports.getProductsByStockDesc = async (req, res) => {
+    try {
+        const enterprise = await Enterprise.findOne({ _id: req.enterprise.sub }).populate('products');
+        const products = enterprise.products.sort((a, b) => {
+            return a.stock - b.stock
+        })
+        if (products === null || products === undefined) {
+            return res.send({ message: 'products not found' })
+        } else {
+            return res.send({ message: 'Products found:', products })
+        }
+    } catch (err) {
+        console.log(err);
+        return res.status(500).send({ message: 'Error getting the products' });
+    }
+}
+
+exports.getProductsByNameAsc = async (req, res) => {
+    try {
+        const enterprise = await Enterprise.findOne({ _id: req.enterprise.sub }).populate('products');
+        const products = enterprise.products.sort((a, b) => {
+            let nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
+            if (nameA > nameB) {
+                return -1;
+            }
+        })
+        if (products === null || products === undefined) {
+            return res.send({ message: 'products not found' })
+        } else {
+            return res.send({ message: 'Products found:', products })
+        }
+    } catch (err) {
+        console.log(err);
+        return res.status(500).send({ message: 'Error getting the products' });
+    }
+}
+
+exports.getProductsByNameDesc = async (req, res) => {
+    try {
+        const enterprise = await Enterprise.findOne({ _id: req.enterprise.sub }).populate('products');
+
+        const products = enterprise.products.sort((a, b) => {
+            let nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
+            if (nameA < nameB) {
+                return -1;
+            }
+            if (nameA > nameB) {
+                return 1;
+            }
+            return 0;
+        })
+        if (products === null || products === undefined) {
+            return res.send({ message: 'products not found' })
+        } else {
+            return res.send({ message: 'Products found:', products })
+        }
+    } catch (err) {
+        console.log(err);
+        return res.status(500).send({ message: 'Error getting the products' });
+    }
+}
+
+exports.getProductsByProviderAsc = async (req, res) => {
+    try {
+        const enterprise = await Enterprise.findOne({ _id: req.enterprise.sub }).populate('products');
+        const products = enterprise.products.sort((a, b) => {
+            let providerA = a.provider.toLowerCase(), providerB = b.provider.toLowerCase();
+            if (providerA < providerB) {
+                return -1;
+            }
+        })
+        if (products === null || products === undefined) {
+            return res.send({ message: 'products not found' })
+        } else {
+            return res.send({ message: 'Products found:', products })
+        }
+    } catch (err) {
+        console.log(err);
+        return res.status(500).send({ message: 'Error getting the products' });
+    }
+}
+
+exports.getProductsByProviderDesc = async (req, res) => {
+    try {
+        const enterprise = await Enterprise.findOne({ _id: req.enterprise.sub }).populate('products');
+        const products = enterprise.products.sort((a, b) => {
+            let providerA = a.name.toLowerCase(), providerB = b.name.toLowerCase();
+            if (providerA < providerB) {
+                return -1;
+            }
+            if (providerA > providerB) {
+                return 1;
+            }
+            return 0;
+        })
+        if (products === null || products === undefined) {
+            return res.send({ message: 'products not found' })
+        } else {
+            return res.send({ message: 'Products found:', products })
+        }
+    } catch (err) {
+        console.log(err);
+        return res.status(500).send({ message: 'Error getting the products' });
+    }
+}
