@@ -1,0 +1,1133 @@
+{
+	"info": {
+		"_postman_id": "0f4e978b-bf9c-4a7f-acfd-d8a224a773e5",
+		"name": "sucursalesEmpresa",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19445628"
+	},
+	"item": [
+		{
+			"name": "RutasEnterprise",
+			"item": [
+				{
+					"name": "PrivAdminRoutes",
+					"item": [
+						{
+							"name": "SaveEnterprise",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MjgzNTM3NjFkOTUyZDU3MmM5Yjc2Y2YiLCJuYW1lIjoiQURNSU4iLCJ1c2VybmFtZSI6IlN1cGVyQWRtaW4iLCJwYXNzd29yZCI6IiQyYSQxMCRQNFB0OW4zL0xjSTRGb211RmV4SlZPOGdWMTB1ckZFaC5JRmNIeTB6YW8zYjJNYVFwWWJqbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1Mjk5NjA2MiwiZXhwIjoxNjUzMDUwMDYyfQ.zm627M-EHCVeY99wWo60m-4lrtnZav362Mg7T5Qk8iQ\"",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "deportes",
+											"type": "default"
+										},
+										{
+											"key": "type",
+											"value": "ropaDeportiva",
+											"type": "default"
+										},
+										{
+											"key": "username",
+											"value": "cveliz",
+											"type": "default"
+										},
+										{
+											"key": "email",
+											"value": "cveliz@gmail.com",
+											"type": "default"
+										},
+										{
+											"key": "password",
+											"value": "789",
+											"type": "default"
+										},
+										{
+											"key": "role",
+											"value": "EMPRESA",
+											"type": "default"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:3200/enterprise/saveEnterprise",
+									"host": [
+										"localhost"
+									],
+									"port": "3200",
+									"path": [
+										"enterprise",
+										"saveEnterprise"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateEnterprise",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MjgzNTM3NjFkOTUyZDU3MmM5Yjc2Y2YiLCJuYW1lIjoiQURNSU4iLCJ1c2VybmFtZSI6IlN1cGVyQWRtaW4iLCJwYXNzd29yZCI6IiQyYSQxMCRQNFB0OW4zL0xjSTRGb211RmV4SlZPOGdWMTB1ckZFaC5JRmNIeTB6YW8zYjJNYVFwWWJqbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1Mjk5NzQ3OSwiZXhwIjoxNjUzMDUxNDc5fQ.1HO5YbdG5AJkfAh4pOhSzANLcxZFIbcw-ZqnYQWK06o\"",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "losgauchitos",
+											"type": "default"
+										},
+										{
+											"key": "role",
+											"value": "EMPRESA",
+											"type": "default"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:3200/enterprise/updateEnterprise/6286b9fc0b32d9d1fcdd0423",
+									"host": [
+										"localhost"
+									],
+									"port": "3200",
+									"path": [
+										"enterprise",
+										"updateEnterprise",
+										"6286b9fc0b32d9d1fcdd0423"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteEnterprise",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MjgzNTM3NjFkOTUyZDU3MmM5Yjc2Y2YiLCJuYW1lIjoiQURNSU4iLCJ1c2VybmFtZSI6IlN1cGVyQWRtaW4iLCJwYXNzd29yZCI6IiQyYSQxMCRQNFB0OW4zL0xjSTRGb211RmV4SlZPOGdWMTB1ckZFaC5JRmNIeTB6YW8zYjJNYVFwWWJqbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1Mjk5NzQ3OSwiZXhwIjoxNjUzMDUxNDc5fQ.1HO5YbdG5AJkfAh4pOhSzANLcxZFIbcw-ZqnYQWK06o\"",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "localhost:3200/enterprise/deleteEnterprise/6286ba230b32d9d1fcdd0426",
+									"host": [
+										"localhost"
+									],
+									"port": "3200",
+									"path": [
+										"enterprise",
+										"deleteEnterprise",
+										"6286ba230b32d9d1fcdd0426"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Enterprises",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MjgzNTM3NjFkOTUyZDU3MmM5Yjc2Y2YiLCJuYW1lIjoiQURNSU4iLCJ1c2VybmFtZSI6IlN1cGVyQWRtaW4iLCJwYXNzd29yZCI6IiQyYSQxMCRQNFB0OW4zL0xjSTRGb211RmV4SlZPOGdWMTB1ckZFaC5JRmNIeTB6YW8zYjJNYVFwWWJqbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1Mjk5NzQ3OSwiZXhwIjoxNjUzMDUxNDc5fQ.1HO5YbdG5AJkfAh4pOhSzANLcxZFIbcw-ZqnYQWK06o\"",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "localhost:3200/enterprise/getEnterprises",
+									"host": [
+										"localhost"
+									],
+									"port": "3200",
+									"path": [
+										"enterprise",
+										"getEnterprises"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Enterprise",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MjgzNTM3NjFkOTUyZDU3MmM5Yjc2Y2YiLCJuYW1lIjoiQURNSU4iLCJ1c2VybmFtZSI6IlN1cGVyQWRtaW4iLCJwYXNzd29yZCI6IiQyYSQxMCRQNFB0OW4zL0xjSTRGb211RmV4SlZPOGdWMTB1ckZFaC5JRmNIeTB6YW8zYjJNYVFwWWJqbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1Mjk5NzQ3OSwiZXhwIjoxNjUzMDUxNDc5fQ.1HO5YbdG5AJkfAh4pOhSzANLcxZFIbcw-ZqnYQWK06o\"",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "localhost:3200/enterprise/getEnterprise/6286b9fc0b32d9d1fcdd0423",
+									"host": [
+										"localhost"
+									],
+									"port": "3200",
+									"path": [
+										"enterprise",
+										"getEnterprise",
+										"6286b9fc0b32d9d1fcdd0423"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "PrivEnterpriseRoutes",
+					"item": [
+						{
+							"name": "Test",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "localhost:3200/enterprise/test",
+									"host": [
+										"localhost"
+									],
+									"port": "3200",
+									"path": [
+										"enterprise",
+										"test"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Register",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "cdaniel",
+											"type": "default"
+										},
+										{
+											"key": "type",
+											"value": "bebidas",
+											"type": "default"
+										},
+										{
+											"key": "username",
+											"value": "cdaniels",
+											"type": "default"
+										},
+										{
+											"key": "email",
+											"value": "cdaniel@gmail.com",
+											"type": "default"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "default"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:3200/enterprise/register",
+									"host": [
+										"localhost"
+									],
+									"port": "3200",
+									"path": [
+										"enterprise",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "cdaniels",
+											"type": "default"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "default"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:3200/enterprise/login",
+									"host": [
+										"localhost"
+									],
+									"port": "3200",
+									"path": [
+										"enterprise",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Mjg3MDBjZmZmNmVhM2IxMDc4ODBhMjciLCJuYW1lIjoiY2RhbmllbCIsInR5cGUiOiJiZWJpZGFzIiwidXNlcm5hbWUiOiJjZGFuaWVscyIsInBhc3N3b3JkIjoiJDJhJDEwJGptN01yUDdjaWs0L0V2R3RWR2NpdU9FZXVGTFQuQ0NOeHZIN08yTmF5LjhOTWMxTG40RWkyIiwicm9sZSI6IkVNUFJFU0EiLCJpYXQiOjE2NTMwMTQ3NDMsImV4cCI6MTY1MzA2ODc0M30.eVGKuVMEpjpospz-t43Uyp3a8SmLth7At2QCv6piWG8",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Coca cola",
+											"type": "default"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:3200/enterprise/update/628700cfff6ea3b107880a27",
+									"host": [
+										"localhost"
+									],
+									"port": "3200",
+									"path": [
+										"enterprise",
+										"update",
+										"628700cfff6ea3b107880a27"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "myEnterprise",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Mjg3MDBjZmZmNmVhM2IxMDc4ODBhMjciLCJuYW1lIjoiY2RhbmllbCIsInR5cGUiOiJiZWJpZGFzIiwidXNlcm5hbWUiOiJjZGFuaWVscyIsInBhc3N3b3JkIjoiJDJhJDEwJGptN01yUDdjaWs0L0V2R3RWR2NpdU9FZXVGTFQuQ0NOeHZIN08yTmF5LjhOTWMxTG40RWkyIiwicm9sZSI6IkVNUFJFU0EiLCJpYXQiOjE2NTMwMTQ3NDMsImV4cCI6MTY1MzA2ODc0M30.eVGKuVMEpjpospz-t43Uyp3a8SmLth7At2QCv6piWG8",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "",
+											"value": "",
+											"type": "default",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:3200/enterprise/myEnterprise",
+									"host": [
+										"localhost"
+									],
+									"port": "3200",
+									"path": [
+										"enterprise",
+										"myEnterprise"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Mjg3MDAxM2ZmNmVhM2IxMDc4ODBhMWIiLCJuYW1lIjoiY2RhbmllbCIsInR5cGUiOiJiZWJpZGFzIiwidXNlcm5hbWUiOiJjZGFuaWVscyIsInBhc3N3b3JkIjoiJDJhJDEwJEd0cGdJVG80WlNaSjB5SVRwMTZnYi5WUzNGQlBWRVdpbktvczBRWUdIaklJOU1BVi5ZRlNHIiwicm9sZSI6IkVNUFJFU0EiLCJpYXQiOjE2NTMwMTQ1ODEsImV4cCI6MTY1MzA2ODU4MX0.cICeG5predipMkxBWP1i0J7n1tyZzpTkEsqXuYOqx6k\"",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "localhost:3200/enterprise/delete/62870013ff6ea3b107880a1b",
+									"host": [
+										"localhost"
+									],
+									"port": "3200",
+									"path": [
+										"enterprise",
+										"delete",
+										"62870013ff6ea3b107880a1b"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "RutasEnterpriseBranch",
+			"item": [
+				{
+					"name": "Test",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3200/enterpriseBranch/Test",
+							"host": [
+								"localhost"
+							],
+							"port": "3200",
+							"path": [
+								"enterpriseBranch",
+								"Test"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddEnterpriseBranch",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Mjg3MDBjZmZmNmVhM2IxMDc4ODBhMjciLCJuYW1lIjoiQ29jYSBjb2xhIiwidHlwZSI6ImJlYmlkYXMiLCJ1c2VybmFtZSI6ImNkYW5pZWxzIiwicGFzc3dvcmQiOiIkMmEkMTAkam03TXJQN2NpazQvRXZHdFZHY2l1T0VldUZMVC5DQ054dkg3TzJOYXkuOE5NYzFMbjRFaTIiLCJyb2xlIjoiRU1QUkVTQSIsImlhdCI6MTY1MzAxNTAzOSwiZXhwIjoxNjUzMDY5MDM5fQ.PRYv6NhGghgayBJTXUMfipwKqncVEBVxNdm9PAgc9KA",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Coca cola",
+									"type": "default"
+								},
+								{
+									"key": "direction",
+									"value": "zona 1 Guatemala",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3200/enterpriseBranch/addEnterpriseBranch",
+							"host": [
+								"localhost"
+							],
+							"port": "3200",
+							"path": [
+								"enterpriseBranch",
+								"addEnterpriseBranch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateEnterpriseBrach",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Mjg3MDBjZmZmNmVhM2IxMDc4ODBhMjciLCJuYW1lIjoiQ29jYSBjb2xhIiwidHlwZSI6ImJlYmlkYXMiLCJ1c2VybmFtZSI6ImNkYW5pZWxzIiwicGFzc3dvcmQiOiIkMmEkMTAkam03TXJQN2NpazQvRXZHdFZHY2l1T0VldUZMVC5DQ054dkg3TzJOYXkuOE5NYzFMbjRFaTIiLCJyb2xlIjoiRU1QUkVTQSIsImlhdCI6MTY1MzAxNTAzOSwiZXhwIjoxNjUzMDY5MDM5fQ.PRYv6NhGghgayBJTXUMfipwKqncVEBVxNdm9PAgc9KA",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "sucursal Coca cola",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3200/enterpriseBranch/updateEnterpriseBrach/6287021cff6ea3b107880a2f",
+							"host": [
+								"localhost"
+							],
+							"port": "3200",
+							"path": [
+								"enterpriseBranch",
+								"updateEnterpriseBrach",
+								"6287021cff6ea3b107880a2f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteEnterpriceBranch",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Mjg3MDBjZmZmNmVhM2IxMDc4ODBhMjciLCJuYW1lIjoiQ29jYSBjb2xhIiwidHlwZSI6ImJlYmlkYXMiLCJ1c2VybmFtZSI6ImNkYW5pZWxzIiwicGFzc3dvcmQiOiIkMmEkMTAkam03TXJQN2NpazQvRXZHdFZHY2l1T0VldUZMVC5DQ054dkg3TzJOYXkuOE5NYzFMbjRFaTIiLCJyb2xlIjoiRU1QUkVTQSIsImlhdCI6MTY1MzAxNTAzOSwiZXhwIjoxNjUzMDY5MDM5fQ.PRYv6NhGghgayBJTXUMfipwKqncVEBVxNdm9PAgc9KA",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:3200/enterpriseBranch/deleteEnterpriceBranch/6287021cff6ea3b107880a2f",
+							"host": [
+								"localhost"
+							],
+							"port": "3200",
+							"path": [
+								"enterpriseBranch",
+								"deleteEnterpriceBranch",
+								"6287021cff6ea3b107880a2f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EnterprisesBranch",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Mjg3MDBjZmZmNmVhM2IxMDc4ODBhMjciLCJuYW1lIjoiQ29jYSBjb2xhIiwidHlwZSI6ImJlYmlkYXMiLCJ1c2VybmFtZSI6ImNkYW5pZWxzIiwicGFzc3dvcmQiOiIkMmEkMTAkam03TXJQN2NpazQvRXZHdFZHY2l1T0VldUZMVC5DQ054dkg3TzJOYXkuOE5NYzFMbjRFaTIiLCJyb2xlIjoiRU1QUkVTQSIsImlhdCI6MTY1MzAxNTAzOSwiZXhwIjoxNjUzMDY5MDM5fQ.PRYv6NhGghgayBJTXUMfipwKqncVEBVxNdm9PAgc9KA",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:3200/enterpriseBranch/getEnterprisesBranch",
+							"host": [
+								"localhost"
+							],
+							"port": "3200",
+							"path": [
+								"enterpriseBranch",
+								"getEnterprisesBranch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EnterpriseBranch",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Mjg3MDBjZmZmNmVhM2IxMDc4ODBhMjciLCJuYW1lIjoiQ29jYSBjb2xhIiwidHlwZSI6ImJlYmlkYXMiLCJ1c2VybmFtZSI6ImNkYW5pZWxzIiwicGFzc3dvcmQiOiIkMmEkMTAkam03TXJQN2NpazQvRXZHdFZHY2l1T0VldUZMVC5DQ054dkg3TzJOYXkuOE5NYzFMbjRFaTIiLCJyb2xlIjoiRU1QUkVTQSIsImlhdCI6MTY1MzAxNTAzOSwiZXhwIjoxNjUzMDY5MDM5fQ.PRYv6NhGghgayBJTXUMfipwKqncVEBVxNdm9PAgc9KA",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:3200/enterpriseBranch/getEnterpriseBranch/6287027aff6ea3b107880a36",
+							"host": [
+								"localhost"
+							],
+							"port": "3200",
+							"path": [
+								"enterpriseBranch",
+								"getEnterpriseBranch",
+								"6287027aff6ea3b107880a36"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "RutasProduct",
+			"item": [
+				{
+					"name": "Test",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:3200/product/test",
+							"host": [
+								"localhost"
+							],
+							"port": "3200",
+							"path": [
+								"product",
+								"test"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddProduct",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Mjg3MDBjZmZmNmVhM2IxMDc4ODBhMjciLCJuYW1lIjoiQ29jYSBjb2xhIiwidHlwZSI6ImJlYmlkYXMiLCJ1c2VybmFtZSI6ImNkYW5pZWxzIiwicGFzc3dvcmQiOiIkMmEkMTAkam03TXJQN2NpazQvRXZHdFZHY2l1T0VldUZMVC5DQ054dkg3TzJOYXkuOE5NYzFMbjRFaTIiLCJyb2xlIjoiRU1QUkVTQSIsImlhdCI6MTY1MzAxNTAzOSwiZXhwIjoxNjUzMDY5MDM5fQ.PRYv6NhGghgayBJTXUMfipwKqncVEBVxNdm9PAgc9KA",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "mirinda",
+									"type": "default"
+								},
+								{
+									"key": "provider",
+									"value": "coca cola",
+									"type": "default"
+								},
+								{
+									"key": "stock",
+									"value": "1000",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3200/product/addProduct",
+							"host": [
+								"localhost"
+							],
+							"port": "3200",
+							"path": [
+								"product",
+								"addProduct"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateProduct",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Mjg3MDBjZmZmNmVhM2IxMDc4ODBhMjciLCJuYW1lIjoiQ29jYSBjb2xhIiwidHlwZSI6ImJlYmlkYXMiLCJ1c2VybmFtZSI6ImNkYW5pZWxzIiwicGFzc3dvcmQiOiIkMmEkMTAkam03TXJQN2NpazQvRXZHdFZHY2l1T0VldUZMVC5DQ054dkg3TzJOYXkuOE5NYzFMbjRFaTIiLCJyb2xlIjoiRU1QUkVTQSIsImlhdCI6MTY1MzAxNTAzOSwiZXhwIjoxNjUzMDY5MDM5fQ.PRYv6NhGghgayBJTXUMfipwKqncVEBVxNdm9PAgc9KA",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "provider",
+									"value": "industrias licorera",
+									"type": "default"
+								},
+								{
+									"key": "stock",
+									"value": "2000",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3200/product/updateProduct/6287049aff6ea3b107880a4e",
+							"host": [
+								"localhost"
+							],
+							"port": "3200",
+							"path": [
+								"product",
+								"updateProduct",
+								"6287049aff6ea3b107880a4e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Mjg3MDBjZmZmNmVhM2IxMDc4ODBhMjciLCJuYW1lIjoiQ29jYSBjb2xhIiwidHlwZSI6ImJlYmlkYXMiLCJ1c2VybmFtZSI6ImNkYW5pZWxzIiwicGFzc3dvcmQiOiIkMmEkMTAkam03TXJQN2NpazQvRXZHdFZHY2l1T0VldUZMVC5DQ054dkg3TzJOYXkuOE5NYzFMbjRFaTIiLCJyb2xlIjoiRU1QUkVTQSIsImlhdCI6MTY1MzAxNTAzOSwiZXhwIjoxNjUzMDY5MDM5fQ.PRYv6NhGghgayBJTXUMfipwKqncVEBVxNdm9PAgc9KA",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:3200/product/getProduct/628703e4ff6ea3b107880a3c",
+							"host": [
+								"localhost"
+							],
+							"port": "3200",
+							"path": [
+								"product",
+								"getProduct",
+								"628703e4ff6ea3b107880a3c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Products",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Mjg3MDBjZmZmNmVhM2IxMDc4ODBhMjciLCJuYW1lIjoiQ29jYSBjb2xhIiwidHlwZSI6ImJlYmlkYXMiLCJ1c2VybmFtZSI6ImNkYW5pZWxzIiwicGFzc3dvcmQiOiIkMmEkMTAkam03TXJQN2NpazQvRXZHdFZHY2l1T0VldUZMVC5DQ054dkg3TzJOYXkuOE5NYzFMbjRFaTIiLCJyb2xlIjoiRU1QUkVTQSIsImlhdCI6MTY1MzAxNTAzOSwiZXhwIjoxNjUzMDY5MDM5fQ.PRYv6NhGghgayBJTXUMfipwKqncVEBVxNdm9PAgc9KA",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:3200/product/getProducts",
+							"host": [
+								"localhost"
+							],
+							"port": "3200",
+							"path": [
+								"product",
+								"getProducts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteProduct",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Mjg2Yjg3NjBiMzJkOWQxZmNkZDA0MWUiLCJuYW1lIjoicGVwc2kiLCJ0eXBlIjoiZ2FzZW9zYXMiLCJ1c2VybmFtZSI6ImJwZXJleiIsInBhc3N3b3JkIjoiJDJhJDEwJG44WC55TG1vYWhZZXZoR2ZkM2QyRHVmbWFjY2tkb1dBVUpjVWVITEZyNGxxZGZ6U2gzWEJxIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNjUyOTk5MzI4LCJleHAiOjE2NTMwNTMzMjh9.S7RdMlSvYDt9pXc8uYcMozMUGTWeTge8mIUqqUOT5dI\"",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:3200/product/deleteProduct/6286c767f1e41d48ab7586f4",
+							"host": [
+								"localhost"
+							],
+							"port": "3200",
+							"path": [
+								"product",
+								"deleteProduct",
+								"6286c767f1e41d48ab7586f4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProductsByStockAsc",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Mjg3MDBjZmZmNmVhM2IxMDc4ODBhMjciLCJuYW1lIjoiQ29jYSBjb2xhIiwidHlwZSI6ImJlYmlkYXMiLCJ1c2VybmFtZSI6ImNkYW5pZWxzIiwicGFzc3dvcmQiOiIkMmEkMTAkam03TXJQN2NpazQvRXZHdFZHY2l1T0VldUZMVC5DQ054dkg3TzJOYXkuOE5NYzFMbjRFaTIiLCJyb2xlIjoiRU1QUkVTQSIsImlhdCI6MTY1MzAxNTAzOSwiZXhwIjoxNjUzMDY5MDM5fQ.PRYv6NhGghgayBJTXUMfipwKqncVEBVxNdm9PAgc9KA",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:3200/product/getProductsByStockAsc",
+							"host": [
+								"localhost"
+							],
+							"port": "3200",
+							"path": [
+								"product",
+								"getProductsByStockAsc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProductsByStockDesc",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Mjg3MDBjZmZmNmVhM2IxMDc4ODBhMjciLCJuYW1lIjoiQ29jYSBjb2xhIiwidHlwZSI6ImJlYmlkYXMiLCJ1c2VybmFtZSI6ImNkYW5pZWxzIiwicGFzc3dvcmQiOiIkMmEkMTAkam03TXJQN2NpazQvRXZHdFZHY2l1T0VldUZMVC5DQ054dkg3TzJOYXkuOE5NYzFMbjRFaTIiLCJyb2xlIjoiRU1QUkVTQSIsImlhdCI6MTY1MzAxNTAzOSwiZXhwIjoxNjUzMDY5MDM5fQ.PRYv6NhGghgayBJTXUMfipwKqncVEBVxNdm9PAgc9KA",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:3200/product/getProductsByStockDesc",
+							"host": [
+								"localhost"
+							],
+							"port": "3200",
+							"path": [
+								"product",
+								"getProductsByStockDesc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getProductsByName",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Mjg3MDBjZmZmNmVhM2IxMDc4ODBhMjciLCJuYW1lIjoiQ29jYSBjb2xhIiwidHlwZSI6ImJlYmlkYXMiLCJ1c2VybmFtZSI6ImNkYW5pZWxzIiwicGFzc3dvcmQiOiIkMmEkMTAkam03TXJQN2NpazQvRXZHdFZHY2l1T0VldUZMVC5DQ054dkg3TzJOYXkuOE5NYzFMbjRFaTIiLCJyb2xlIjoiRU1QUkVTQSIsImlhdCI6MTY1MzAyMDY3NSwiZXhwIjoxNjUzMDc0Njc1fQ.aaeJp-TYsN-2yOLzYmOZZaX-3MKXIiRX4kSzQ4OztT8\"",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "c",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3200/product/getProductsByName",
+							"host": [
+								"localhost"
+							],
+							"port": "3200",
+							"path": [
+								"product",
+								"getProductsByName"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getProductsByProvider",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Mjg3MDBjZmZmNmVhM2IxMDc4ODBhMjciLCJuYW1lIjoiQ29jYSBjb2xhIiwidHlwZSI6ImJlYmlkYXMiLCJ1c2VybmFtZSI6ImNkYW5pZWxzIiwicGFzc3dvcmQiOiIkMmEkMTAkam03TXJQN2NpazQvRXZHdFZHY2l1T0VldUZMVC5DQ054dkg3TzJOYXkuOE5NYzFMbjRFaTIiLCJyb2xlIjoiRU1QUkVTQSIsImlhdCI6MTY1MzAyMDY3NSwiZXhwIjoxNjUzMDc0Njc1fQ.aaeJp-TYsN-2yOLzYmOZZaX-3MKXIiRX4kSzQ4OztT8\"",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "provider",
+									"value": "n",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3200/product/getProductsByProvider",
+							"host": [
+								"localhost"
+							],
+							"port": "3200",
+							"path": [
+								"product",
+								"getProductsByProvider"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "RutasProductBranch",
+			"item": [
+				{
+					"name": "AddBranchProducts",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Mjg3MDBjZmZmNmVhM2IxMDc4ODBhMjciLCJuYW1lIjoiQ29jYSBjb2xhIiwidHlwZSI6ImJlYmlkYXMiLCJ1c2VybmFtZSI6ImNkYW5pZWxzIiwicGFzc3dvcmQiOiIkMmEkMTAkam03TXJQN2NpazQvRXZHdFZHY2l1T0VldUZMVC5DQ054dkg3TzJOYXkuOE5NYzFMbjRFaTIiLCJyb2xlIjoiRU1QUkVTQSIsImlhdCI6MTY1MzAyMDY3NSwiZXhwIjoxNjUzMDc0Njc1fQ.aaeJp-TYsN-2yOLzYmOZZaX-3MKXIiRX4kSzQ4OztT8\"",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "product",
+									"value": "62870493ff6ea3b107880a4a",
+									"type": "default"
+								},
+								{
+									"key": "stock",
+									"value": "250",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3200/productBranch/addProductsBranch/6287027aff6ea3b107880a36",
+							"host": [
+								"localhost"
+							],
+							"port": "3200",
+							"path": [
+								"productBranch",
+								"addProductsBranch",
+								"6287027aff6ea3b107880a36"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "saleOfProduct",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Mjg3MDBjZmZmNmVhM2IxMDc4ODBhMjciLCJuYW1lIjoiQ29jYSBjb2xhIiwidHlwZSI6ImJlYmlkYXMiLCJ1c2VybmFtZSI6ImNkYW5pZWxzIiwicGFzc3dvcmQiOiIkMmEkMTAkam03TXJQN2NpazQvRXZHdFZHY2l1T0VldUZMVC5DQ054dkg3TzJOYXkuOE5NYzFMbjRFaTIiLCJyb2xlIjoiRU1QUkVTQSIsImlhdCI6MTY1MzAyMDY3NSwiZXhwIjoxNjUzMDc0Njc1fQ.aaeJp-TYsN-2yOLzYmOZZaX-3MKXIiRX4kSzQ4OztT8\"",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "quantity",
+									"value": "10",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3200/productBranch/saleOfProduct/6287027aff6ea3b107880a36/6287189bb46ce0b92245c6c6",
+							"host": [
+								"localhost"
+							],
+							"port": "3200",
+							"path": [
+								"productBranch",
+								"saleOfProduct",
+								"6287027aff6ea3b107880a36",
+								"6287189bb46ce0b92245c6c6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProductBranch",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Mjg3MDBjZmZmNmVhM2IxMDc4ODBhMjciLCJuYW1lIjoiQ29jYSBjb2xhIiwidHlwZSI6ImJlYmlkYXMiLCJ1c2VybmFtZSI6ImNkYW5pZWxzIiwicGFzc3dvcmQiOiIkMmEkMTAkam03TXJQN2NpazQvRXZHdFZHY2l1T0VldUZMVC5DQ054dkg3TzJOYXkuOE5NYzFMbjRFaTIiLCJyb2xlIjoiRU1QUkVTQSIsImlhdCI6MTY1MzAyMDY3NSwiZXhwIjoxNjUzMDc0Njc1fQ.aaeJp-TYsN-2yOLzYmOZZaX-3MKXIiRX4kSzQ4OztT8\"",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:3200/productBranch/getProductBranch/6287027aff6ea3b107880a36/6287189bb46ce0b92245c6c6",
+							"host": [
+								"localhost"
+							],
+							"port": "3200",
+							"path": [
+								"productBranch",
+								"getProductBranch",
+								"6287027aff6ea3b107880a36",
+								"6287189bb46ce0b92245c6c6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProductsBranch",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Mjg3MDBjZmZmNmVhM2IxMDc4ODBhMjciLCJuYW1lIjoiQ29jYSBjb2xhIiwidHlwZSI6ImJlYmlkYXMiLCJ1c2VybmFtZSI6ImNkYW5pZWxzIiwicGFzc3dvcmQiOiIkMmEkMTAkam03TXJQN2NpazQvRXZHdFZHY2l1T0VldUZMVC5DQ054dkg3TzJOYXkuOE5NYzFMbjRFaTIiLCJyb2xlIjoiRU1QUkVTQSIsImlhdCI6MTY1MzAyNTUyNywiZXhwIjoxNjUzMDc5NTI3fQ.uP87ItXJLI3QFdAzaIiCpnpc6SU_4UkcmNjBS_Kxz0I\"",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "localhost:3200/productBranch/getProductsBranch/6287027aff6ea3b107880a36",
+							"host": [
+								"localhost"
+							],
+							"port": "3200",
+							"path": [
+								"productBranch",
+								"getProductsBranch",
+								"6287027aff6ea3b107880a36"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
