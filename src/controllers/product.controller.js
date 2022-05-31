@@ -134,7 +134,7 @@ exports.getProductsByStockAsc = async (req, res) => {
     try {
         const enterprise = await Enterprise.findOne({ _id: req.enterprise.sub}).populate('products');
         const products = enterprise.products.sort((a, b) => {
-            return b.stock - a.stock
+            return a.stock - b.stock
         })
         if (products === null || products === undefined) {
             return res.send({ message: 'products not found' })
@@ -151,7 +151,7 @@ exports.getProductsByStockDesc = async (req, res) => {
     try {
         const enterprise = await Enterprise.findOne({ _id: req.enterprise.sub }).populate('products');
         const products = enterprise.products.sort((a, b) => {
-            return a.stock - b.stock
+            return b.stock - a.stock
         })
         if (products === null || products === undefined) {
             return res.send({ message: 'products not found' })
