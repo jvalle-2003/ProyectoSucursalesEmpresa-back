@@ -168,13 +168,15 @@ exports.getProductsByStockDesc = async (req, res) => {
 
 exports.productByName = async(req, res)=>{
     try{
+        const enterprise = await Enterprise.findOne({_id: req.enterprise.sub}).populate('products');
         const params = req.body;
         const data = {
             name: params.name
         };
         const msg = validate.validateData(data);
         if(msg) return res.status(400).send(msg);
-        const products = await Product.find({name: {$regex: params.name, $options: 'i'}}).lean();
+        const products = await enterprise.products;
+        await Product.find({name: {$regex: params.name, $options: 'i'}}).lean();
         return res.send({products})
     }catch(err){
         console.log(err);
@@ -187,13 +189,15 @@ exports.productByName = async(req, res)=>{
 
 exports.productByProvider = async(req, res)=>{
     try{
+        const enterprise = await Enterprise.findOne({_id: req.enterprise.sub}).populate('products');
         const params = req.body;
         const data = {
             provider: params.provider
         };
         const msg = validate.validateData(data);
         if(msg) return res.status(400).send(msg);
-        const products = await Product.find({provider: {$regex: params.provider, $options: 'i'}}).lean();
+        const products = await enterprise.products;
+        await Product.find({provider: {$regex: params.provider, $options: 'i'}}).lean();
         return res.send({products})
     }catch(err){
         console.log(err);
