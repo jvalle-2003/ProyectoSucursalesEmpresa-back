@@ -138,7 +138,7 @@ exports.deleteProducts = async (products) => {
 
 exports.checkUpdateBranch = async (params) => {
     try {
-        if (Object.entries(params).length === 0 || params.productsBranch || params.enterprise) {
+        if (Object.entries(params).length === 0 ) {
             return false;
         } else {
             return true;

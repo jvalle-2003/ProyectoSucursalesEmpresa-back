@@ -104,8 +104,9 @@ exports.getEnterpriseBranch = async (req, res)=>{
         const enterpriseBranchId = req.params.id; 
         console.log(enterpriseBranchId);
         const enterpriseId = req.enterprise.sub;
-        const CheckEnterpriseBranch = await EnterpriseBranch.findOne({_id: enterpriseBranchId}).lean(); 
-        if (CheckEnterpriseBranch === null || CheckEnterpriseBranch.enterprise  != enterpriseId) {
+        const checkEnterpriseBranch = await EnterpriseBranch.findOne({_id: enterpriseBranchId}).lean(); 
+        console.log(checkEnterpriseBranch);
+        if (checkEnterpriseBranch === null || checkEnterpriseBranch.enterprise  != enterpriseId) {
             return res.send({message: 'You cant see the branch '}); 
         } else {
             const enterpriseBranch = await EnterpriseBranch.findOne({ _id: enterpriseBranchId });

@@ -1,6 +1,7 @@
 'use strict'
 
 const Enterprise = require('../models/enterprise.model');
+const EnterpriseBranch = require('../models/enterpriseBranch.model')
 const validate = require('../utils/validate');
 const jwt = require('../services/jwt');
 
@@ -67,39 +68,62 @@ exports.login = async (req, res) => {
 
 exports.update = async (req, res) => {
     try {
-        const enterpriseId = req.params.id;
+        const enterpriseId = req.enterprise.sub;
         const params = req.body;
 
-        const permission = await validate.checkPermission(enterpriseId, req.enterprise.sub);
-        if (permission === false) return res.status(401).send({ message: 'You dont have permission to update this enterprise' });
-        const enterpriseExist = await Enterprise.findOne({ _id: enterpriseId });
-        if (!enterpriseExist) return res.send({ message: 'Enterprise not found' });
-        const validateUpdate = await validate.checkUpdate(params);
-        if (validateUpdate === false) return res.status(400).send({ message: 'Cannot update this information or invalid params' });
-        let alreadyname = await validate.alreadyEnterprise(params.username);
-        if (alreadyname && enterpriseExist.username != params.username) return res.send({ message: 'Username already in use' });
-        const enterpriseUpdate = await Enterprise.findOneAndUpdate({ _id: enterpriseId }, params, { new: true }).lean();
-        if (enterpriseUpdate) return res.send({ message: 'enterprise updated', enterpriseUpdate });
-        return res.send({ message: 'enterprise not updated' });
+        const enterprise = await Enterprise.findOne({ _id: enterpriseId })
+        if (enterprise) {
+            const checkUpdated = await validate.checkUpdate(params);
+            if (checkUpdated === false) {
+                return res.status(400).send({ message: 'Parámetros no válidos para actualizar' })
+            } else {
+                const checkRole = await Enterprise.findOne({ _id: enterpriseId })
+                if (checkRole.role === 'ADMIN') {
+                    return res.status(403).send({ message: 'No puedes editar tu usuario si tienes el rol ADMIN' });
+                } else {
+                    const checkEnterprise = await validate.alreadyEnterprise(params.username);
+                    if (checkEnterprise && enterprise.username != params.username) {
+                        return res.status(201).send({ message: 'Este nombre de usuario ya esta en uso' })
+                    } else {
+                        const updateEnterprise = await Enterprise.findOneAndUpdate({ _id: enterpriseId }, params, { new: true }).lean();
+                        if (!updateEnterprise) {
+                            return res.status(403).send({ message: 'No se ha podido actualizar el usuario' })
+                        } else {
+                            return res.send({ message: 'Usuario actualizado', updateEnterprise })
+                        }
+                    }
+                }
+            }
+        } else {
+            return res.send({ message: 'Este usuario no existe' })
+        }
     } catch (err) {
         console.log(err);
-        return res.status(500).send({ err, message: 'Failed to update enterprise' });
+        return res.status(500).send({ message: 'Error actualizando el usuario' });
     }
-}
+};
 
 exports.delete = async (req, res) => {
     try {
-        const enterpriseId = req.params.id;
-        const persmission = await validate.checkPermission(enterpriseId, req.enterprise.sub);
-        if (persmission === false) return res.status(403).send({ message: 'You dont have permission to delete this enterprise' });
-        const enterpriseDeleted = await Enterprise.findOneAndDelete({ _id: enterpriseId });
-        if (enterpriseDeleted) return res.send({ message: 'Enterprise deleted', enterpriseDeleted });
-        return res.send({ message: 'Enterprise not found or already deleted' });
+        const enterpriseId = req.enterprise.sub;
+
+        const checkRole = await Enterprise.findOne({ _id: enterpriseId })
+        if (checkRole.role === 'ADMIN') {
+            return res.status(403).send({ message: 'No puede eliminar usuarios de rol ADMIN' });
+        } else {
+            await EnterpriseBranch.deleteMany({ enterprise: enterpriseId })
+            const deleteEnterprise = await Enterprise.findOneAndDelete({ _id: enterpriseId });
+            if (!deleteEnterprise) {
+                return res.status(500).send({ message: 'Usuario no encontrado' })
+            } else {
+                return res.send({ message: 'Cuenta eliminada' })
+            }
+        }
     } catch (err) {
         console.log(err);
-        return res.status(500).send({ err, message: 'Error deleting enterprise' });
+        return res.status(500).send({ message: 'Error eliminando el usuario' });
     }
-}
+};
 
 exports.myEnterprise = async (req, res) => {
     try {
@@ -160,13 +184,12 @@ exports.updateEnterprise = async (req, res) => {
         if (!enterpriseExist) return res.send({ message: 'Enterprise not found' });
         const emptyParams = await validate.checkUpdateAdmin(params);
         if (emptyParams === false) return res.status(400).send({ message: 'Empty params or params not update' });
-        if (enterpriseExist.role === 'ADMIN') return res.send({ message: 'enterprise with ADMIN role cant update' });
-        const alreadyUsername = await validate.alreadyEnterprise(params.username);
+        const alreadyUsername = await Enterprise.findOne({ _id: enterpriseId, username: params.username });
         if (alreadyUsername && enterpriseExist.username != alreadyUsername.username) return res.send({ message: 'Username already taken' });
         if (params.role != 'ADMIN' && params.role != 'EMPRESA') return res.status(400).send({ message: 'Invalid role' });
-        const enterpriseUpdated = await Enterprise.findOneAndUpdate({ _id: enterpriseId }, params, { new: true });
-        if (!enterpriseUpdated) return res.send({ message: ' Enterprise not updated' });
-        return res.send({ message: 'Enterprise updated successfully', username: enterpriseUpdated.username });
+        const enterpriseU = await Enterprise.findOneAndUpdate({ _id: enterpriseId }, params, { new: true });
+        if (!enterpriseU) return res.status(400).send({ message: 'Enterprise not updated' });
+        return res.send({ message: 'Enterprise updated successfully', enterpriseU});
 
     } catch (err) {
         console.log(err);
@@ -180,9 +203,9 @@ exports.deleteEnterprise = async (req, res) => {
 
         const enterpriseExist = await Enterprise.findOne({ _id: enterpriseId });
         if (!enterpriseExist) return res.send({ message: 'Enterprise not found' });
-        if (enterpriseExist.role === 'ADMIN') return res.send({ message: ' Could not detel enterprise with ADMIN role' });
+        
         const enterpriseDeleted = await Enterprise.findOneAndDelete({ _id: enterpriseId });
-        if (!enterpriseDeleted) return res.send({ message: 'Enterprise not deleted' });
+        if (!enterpriseDeleted) return res.status(400).send({ message: 'Enterprise not deleted' });
         return res.send({ message: 'Account deleted successfully', enterpriseDeleted })
     } catch (err) {
         console.log(err);
@@ -195,10 +218,11 @@ exports.getEnterprise = async (req, res) => {
         const enterpriseId = req.params.id;
 
         const enterprise = await Enterprise.findOne({ _id: enterpriseId });
+        console.log(enterprise)
         if (!enterprise) {
             return res.send({ message: 'The entered company could not be found' })
         } else {
-            return res.send(enterprise);
+            return res.send({enterprise});
         }
     } catch (err) {
         console.log(err)
@@ -208,10 +232,11 @@ exports.getEnterprise = async (req, res) => {
 
 exports.getEnterprises = async (req, res) => {
     try {
-        const enterprises = await Enterprise.find();
-        return res.send(enterprises)
+        const enterprisesExist = await Enterprise.find();
+        return res.send({message: 'Enterprise:', enterprisesExist})
     } catch (err) {
         console.log(err)
         return res.status(500).send({ message: 'Error getting companies' });
     }
 };
+

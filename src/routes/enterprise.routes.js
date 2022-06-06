@@ -12,8 +12,8 @@ api.get('/test', enterpriseController.test);
 //ENTERPRISE
 api.post('/register', enterpriseController.register);
 api.post('/login', enterpriseController.login);
-api.put('/update/:id', mdAuth.ensureAuth, enterpriseController.update);
-api.delete('/delete/:id', mdAuth.ensureAuth, enterpriseController.delete);
+api.put('/update', mdAuth.ensureAuth, enterpriseController.update);
+api.delete('/delete', mdAuth.ensureAuth, enterpriseController.delete);
 api.get('/myEnterprise', mdAuth.ensureAuth, enterpriseController.myEnterprise);
 
 

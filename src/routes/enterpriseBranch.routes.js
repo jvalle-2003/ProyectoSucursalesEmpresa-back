@@ -9,7 +9,7 @@ const enterpriseBranchController = require('../controllers/enterpriseBranch.cont
 
 api.get('/Test', enterpriseBranchController.test);
 api.post('/addEnterpriseBranch', mdAuth.ensureAuth, enterpriseBranchController.addEnterpriseBranch);
-api.post('/updateEnterpriseBrach/:id', mdAuth.ensureAuth, enterpriseBranchController.updateEnterpriseBranch); 
+api.put('/updateEnterpriseBrach/:id', mdAuth.ensureAuth, enterpriseBranchController.updateEnterpriseBranch); 
 api.delete('/deleteEnterpriceBranch/:id', mdAuth.ensureAuth, enterpriseBranchController.deleteEnterpriseBranch); 
 api.get('/getEnterpriseBranch/:id', mdAuth.ensureAuth, enterpriseBranchController.getEnterpriseBranch);
 api.get('/getEnterprisesBranch',mdAuth.ensureAuth, enterpriseBranchController.getEnterprisesBranch);
