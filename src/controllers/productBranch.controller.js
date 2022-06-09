@@ -12,17 +12,16 @@ exports.addProductBranch = async (req, res) => {
     try {
         const params = req.body;
         const enterpriseId = req.enterprise.sub;
-        const enterpriseBranchId = req.params.enterpriseBranchId;
         let data = {
+            enterpriseBranch: params.enterpriseBranch,
             product: params.product,
             stock: params.stock,
             sales: 0
         }
         let msg = validate.validateData(data);
         if (!msg) {
-            const checkBranch = await EnterpriseBranch.findOne({ _id: enterpriseBranchId });
+            const checkBranch = await EnterpriseBranch.findOne({ _id: data.enterpriseBranch });
             if (checkBranch === null || checkBranch.enterprise != enterpriseId) {
-                console.log(enterpriseBranchId);
                 return res.status(400).send({ message: 'You cannot add products to this branch' });
             } else {
                 const enterprise = await Enterprise.findOne({ _id: enterpriseId });
@@ -42,7 +41,7 @@ exports.addProductBranch = async (req, res) => {
                             data.stock = finalStock;
                             const checkProductPosition = await validate.findProductPosition(checkBranch, data.product)
                             const positionId = (await checkBranch.productsBranch[checkProductPosition]._id).toString();
-                            const updateProductBranch = await EnterpriseBranch.findOneAndUpdate({ _id: enterpriseBranchId, 'productsBranch._id': positionId },
+                            const updateProductBranch = await EnterpriseBranch.findOneAndUpdate({ _id: data.enterpriseBranch, 'productsBranch._id': positionId },
                                 { $set: { 'productsBranch.$.stock': data.stock } }, { new: true })
                             return res.send({ message: 'Product added to the branch successfully ', updateProductBranch })
                         } else {
@@ -73,10 +72,10 @@ exports.getProductBranch = async (req, res) => {
         const enterpriseBranchId = req.params.enterpriseBranchId;
         const productBranchId = req.params.productBranchId
         const enterpriseId = req.enterprise.sub;
-
+        console.log(enterpriseBranchId);
         const checkBranch = await EnterpriseBranch.findOne({ _id: enterpriseBranchId });
         if (checkBranch === null || checkBranch.enterprise != enterpriseId) {
-            console.log(enterpriseId);
+            console.log(enterpriseBranchId);
             return res.status(400).send({ message: 'This branch does not belong to the enterprise' })
         } else {
             const enterpriseBranch = await EnterpriseBranch.findOne({ _id: enterpriseBranchId });
@@ -104,7 +103,9 @@ exports.getProductsBranch = async (req, res) => {
             console.log(enterpriseId);
             return res.status(400).send({ message: 'This branch does not belong to the enterprise' })
         } else {
-            const enterpriseBranch = await EnterpriseBranch.findOne({ _id: enterpriseBranchId }).populate('productsBranch');
+
+            // Se agrego la populacion completa de producto cambio a guardar
+            const enterpriseBranch = await EnterpriseBranch.findOne({ _id: enterpriseBranchId }).populate('productsBranch.product');
             const productsBranch = await enterpriseBranch.productsBranch
             if (enterpriseBranch === null || enterpriseBranch === undefined) {
                 return res.status(400).send({ message: 'No products found in the branch' });
@@ -123,19 +124,20 @@ exports.getProductsBranch = async (req, res) => {
 exports.saleOfProduct = async (req, res) => {
     try {
         const params = req.body;
-        const enterpriseBranchId = req.params.enterpriseBranchId;
         const enterpriseId = req.enterprise.sub;
         let data = {
             quantity: params.quantity,
-            productBranchId: req.params.productBranchId
+            enterpriseBranchId: params.enterpriseBranchId,
+            productBranchId: params.productBranchId
         }
         let msg = validate.validateData(data);
         if (!msg) {
-            const checkBranch = await EnterpriseBranch.findOne({ _id: enterpriseBranchId });
+            const checkBranch = await EnterpriseBranch.findOne({ _id: data.enterpriseBranchId });
             if (checkBranch === null || checkBranch.enterprise != enterpriseId) {
+                console.log(data.enterpriseBranchId);
                 return res.status(400).send({ message: 'This branch does not belong to the enterprise' })
             } else {
-                const enterpriseBranch = await EnterpriseBranch.findOne({ _id: enterpriseBranchId });
+                const enterpriseBranch = await EnterpriseBranch.findOne({ _id: data.enterpriseBranchId });
                 const productBranch = enterpriseBranch.productsBranch.id(data.productBranchId)
                 if (productBranch === null || productBranch === undefined) {
                     console.log(productBranch)

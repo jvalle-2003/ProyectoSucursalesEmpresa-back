@@ -11,7 +11,7 @@ api.post('/addProductsBranch/:enterpriseBranchId', mdAuth.ensureAuth, productBra
 api.get('/getProductBranch/:enterpriseBranchId/:productBranchId',mdAuth.ensureAuth, productBranchController.getProductBranch);
 api.get('/getProductsBranch/:enterpriseBranchId',mdAuth.ensureAuth, productBranchController.getProductsBranch);
 //---------------------Ruta para vender productos de una sucursal--------------------------------
-api.post('/saleOfProduct/:enterpriseBranchId/:productBranchId', mdAuth.ensureAuth, productBranchController.saleOfProduct); 
+api.post('/saleOfProduct', mdAuth.ensureAuth, productBranchController.saleOfProduct); 
 
 module.exports = api;
 
