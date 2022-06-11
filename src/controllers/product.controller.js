@@ -196,7 +196,7 @@ exports.productByProvider = async(req, res)=>{
         };
         const msg = validate.validateData(data);
         if(msg) return res.status(400).send(msg);
-        const products = await enterprise.products;
+        const products = await enterprise.products
         await Product.find({provider: {$regex: params.provider, $options: 'i'}}).lean();
         return res.send({products})
     }catch(err){

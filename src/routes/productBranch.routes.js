@@ -6,7 +6,7 @@ const productBranchController= require('../controllers/productBranch.controller'
 const mdAuth = require('../services/authenticated');
 
 //---------------------Ruta para Agregar productos a Sucursales---------------
-api.post('/addProductsBranch/:enterpriseBranchId', mdAuth.ensureAuth, productBranchController.addProductBranch);
+api.post('/addProductsBranch', mdAuth.ensureAuth, productBranchController.addProductBranch);
 //----------------------Rutas para Buscar productos de Sucursal--------------------------
 api.get('/getProductBranch/:enterpriseBranchId/:productBranchId',mdAuth.ensureAuth, productBranchController.getProductBranch);
 api.get('/getProductsBranch/:enterpriseBranchId',mdAuth.ensureAuth, productBranchController.getProductsBranch);
