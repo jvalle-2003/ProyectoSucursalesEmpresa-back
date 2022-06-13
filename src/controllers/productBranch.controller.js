@@ -163,3 +163,27 @@ exports.saleOfProduct = async (req, res) => {
         return res.status(500).send({ message: 'Error selling product' });
     }
 }
+
+exports.getProductsBranchBySales = async (req, res) => {
+    try {
+        const enterpriseBranchId = req.params.enterpriseBranchId;
+        const enterpriseId = req.enterprise.sub;
+        const checkBranch = await EnterpriseBranch.findOne({ _id: enterpriseBranchId });
+        if (checkBranch === null || checkBranch.enterprise != enterpriseId) {
+            return res.status(400).send({ message: 'Esta sucursal no pertence a la empresa' })
+        } else {
+            const branch = await EnterpriseBranch.findOne({ _id: enterpriseBranchId }).populate('productsBranch').populate('productsBranch.product');
+            const productsBranch = await branch.productsBranch.sort((a, b) => {
+                return b.sales - a.sales
+            })
+            if (branch === null || branch === undefined) {
+                return res.status(400).send({ message: 'No se han encontrado productos en la sucursal' });
+            } else {
+                return res.send({ message: 'Productos encontrados:', productsBranch });
+            }
+        }
+    } catch (err) {
+        console.log(err);
+        return res.status(500).send({ message: 'Error obteniendo los productos' });
+    }
+}
